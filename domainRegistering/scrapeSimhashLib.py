@@ -1,6 +1,3 @@
-# Testo prodotto con il comando bash textClustering.sh 2017-09-08
-# https://leons.im/posts/a-python-implementation-of-simhash-algorithm/
-# https://github.com/reubano/changanya
 import sys
 import os
 import re
@@ -190,6 +187,7 @@ def printClusters(result,data,filename,metadata,date,min_size,max_size):
 	        
             f.write("<br>")
     f.close()
+<<<<<<< HEAD
 
 
 
@@ -244,3 +242,4 @@ def printSimpleClusters(result,data,filename,date,min_size,max_size):
             
             f.write("<br>")
     f.close()
+
