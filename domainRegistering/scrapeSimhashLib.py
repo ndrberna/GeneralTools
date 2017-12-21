@@ -190,3 +190,57 @@ def printClusters(result,data,filename,metadata,date,min_size,max_size):
 	        
             f.write("<br>")
     f.close()
+
+
+
+def printSimpleClusters(result,data,filename,date,min_size,max_size):
+    filename=filename+".html"
+    f = open(filename, 'w')
+    count=0
+    for i in result:
+        if (len(i)>min_size) and (len(i)<max_size):
+
+            medoid=findMedoid(i,data)
+            cluster_distance=0
+            for j in result:
+                other=findMedoid(j,data)
+                
+                cluster_distance=cluster_distance+compare(data[medoid],data[other])
+            
+            count+=1
+            cluster=i
+            unione=0
+            unione=internalSimilarity(cluster,data)
+            
+            #print "Cluster: "+str(i)
+            #print "Medoid: "+ medoid
+            #print "Separation: " + str(cluster_distance)
+            #print "Cohesion: " + str(unione)
+
+
+            print(str(len(i))) 
+            f.write("<style>a:link  { text-decoration: none;}a:visited { text-decoration: none;}figure {  display: inline-block;  margin: 10px;}figure img {    vertical-align: top;}</style>")
+            f.write("<h4>Cluster num."+str(count)+" - elements: "+str(len(i))+"</h4>") 
+            #f.write("<br />element internal distance: "+str(round(float(unione)/(len(i)),2)))
+            #print float(unione)
+            #print fattoriale(len(i))
+            #print "<br><br><b>Cluster:"+str(count)+" </b>" 
+            f.write("<table>")
+            
+            for j in i:
+                
+                    
+                filepath="/Users/thevault/.virtualenvs/generalTools/domainRegistering/IMMAGINI/"+date+"/"+j+".png"
+                f.write("<figure>")
+                if os.path.isfile(filepath):
+
+                    
+                    f.write("<a title='"+content + "' target=_blank href="+filepath+"><img width='100px' src="+filepath+"></a>")
+                    
+                    
+                f.write("<figcaption><a target=_blank href="+j+">"+j+"</a></figcaption>")
+                f.write("</figure>")
+                #print metadata[j]
+            
+            f.write("<br>")
+    f.close()
