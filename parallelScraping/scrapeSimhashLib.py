@@ -1,6 +1,4 @@
-# Testo prodotto con il comando bash textClustering.sh 2017-09-08
-# https://leons.im/posts/a-python-implementation-of-simhash-algorithm/
-# https://github.com/reubano/changanya
+# bash textClustering.sh 2017-09-08
 import sys
 import os
 import re
